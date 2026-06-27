@@ -118,8 +118,3 @@ http://localhost:3000
 
 GitHub: https://github.com/yashikam15
 
----
-
-## ⭐ If you like this project
-
-Please consider giving this repository a ⭐ on GitHub.
