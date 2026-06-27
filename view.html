@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>View Medicines</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f4f6f8;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table {
+    width: 85%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #2c7be5;
+    color: white;
+}
+
+tr:hover {
+    background: #f1f1f1;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+    color: #2c7be5;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Medicine Inventory</h2>
+
+<table>
+<tr>
+<th>Name</th>
+<th>Company</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Expiry Date</th>
+</tr>
+<tbody id="data"></tbody>
+</table>
+
+<a href="home.html">⬅ Back to Home</a>
+
+<script>
+async function loadAll() {
+    const res = await fetch('/view');
+    const medicines = await res.json();
+    const table = document.getElementById("data");
+
+    table.innerHTML = "";
+    medicines.forEach(m => {
+        table.innerHTML += `
+        <tr>
+            <td>${m.medicineName}</td>
+            <td>${m.companyName}</td>
+            <td>${m.price}</td>
+            <td>${m.quantity}</td>
+            <td>${new Date(m.expirationDate).toLocaleDateString()}</td>
+        </tr>`;
+    });
+}
+loadAll();
+</script>
+
+</body>
+</html>

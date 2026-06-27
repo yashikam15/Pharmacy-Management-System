@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Update Medicine</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #fff8e1, #f9f9f9);
+}
+
+.container {
+    width: 400px;
+    margin: 80px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+h2 {
+    text-align: center;
+    color: #f9a825;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+button {
+    background: #f9a825;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #f57f17;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #f9a825;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Update Medicine</h2>
+
+<input id="u_name" placeholder="Medicine Name">
+<input id="u_price" type="number" placeholder="New Price">
+<input id="u_quantity" type="number" placeholder="New Quantity">
+<input id="u_expiry" type="date">
+
+<button onclick="updateMedicine()">Update</button>
+
+<a href="home.html">⬅ Back to Home</a>
+</div>
+
+<script src="updatescrpit.js"></script>
+</body>
+</html>

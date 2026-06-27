@@ -1,0 +1,15 @@
+
+Paracetamol	Cipla Ltd.	50	100	2026-05-30
+Amoxicillin	Sun Pharma	120	50	2027-01-15
+Ibuprofen	Dr. Reddy’s Labs	80	75	2026-09-10
+Cetirizine	Lupin Pharma	40	200	2026-12-01
+Metformin	Torrent Pharma	150	60	2027-03-20
+Aspirin	Zydus Cadila	60	150	2026-08-12
+Azithromycin	Glenmark Pharma	200	40	2027-02-05
+Diclofenac	Alkem Labs	95	80	2026-11-22
+Omeprazole	Intas Pharma	180	60	2027-04-10
+Vitamin C Tabs	Himalaya Wellness	45	300	2026-10-01
+Calcium Tabs	Abbott Healthcare	130	90	2027-01-25
+Insulin	Biocon Ltd.	500	25	2026-06-30
+Hydrocortisone	Novartis India	150	50	2026-09-15
+Levothyroxine	Mankind Pharma	220	70	2027-03-12

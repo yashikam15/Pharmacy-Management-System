@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>MediTrack - Pharmacy Inventory</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ===== Body & Layout ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
+}
+
+/* ===== Main content wrapper ===== */
+.main {
+    flex: 1; /* takes remaining space so footer stays at bottom */
+}
+
+/* ===== Header ===== */
+.header {
+    background: #007bff;
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+.header p {
+    margin-top: 5px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+/* ===== Dashboard Counters ===== */
+.counters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.counter {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s;
+}
+.counter:hover {
+    transform: translateY(-8px);
+}
+.counter h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #2c3e50;
+}
+.counter p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* ===== Cards Grid ===== */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-content: center;
+    gap: 30px;
+    margin: 40px;
+}
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+.card i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+.card h2 {
+    margin: 10px 0 5px 0;
+}
+.card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Card Colors */
+.card.add { border-left: 6px solid #28a745; }
+.card.view { border-left: 6px solid #007bff; }
+.card.update { border-left: 6px solid #ffc107; }
+.card.delete { border-left: 6px solid #dc3545; }
+
+/* ===== Footer ===== */
+.footer {
+    padding: 15px;
+    background: #007bff;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media(max-width: 700px){
+    .counters, .container {
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+    <div class="header">
+        <h1>MediTrack</h1>
+        <p>Pharmacy Inventory Management System</p>
+    </div>
+
+    <!-- Dashboard Counters -->
+    <div class="counters">
+        <div class="counter" id="totalMedicines">
+            <h2>0</h2>
+            <p>Total Medicines</p>
+        </div>
+        <div class="counter" id="expiredMedicines">
+            <h2>0</h2>
+            <p>Expired Medicines</p>
+        </div>
+        <div class="counter" id="lowStock">
+            <h2>0</h2>
+            <p>Low Stock (&lt;10)</p>
+        </div>
+    </div>
+
+    <!-- Action Cards -->
+    <div class="container">
+        <a href="index.html" class="card add">
+            <i class="fas fa-plus-circle"></i>
+            <h2>Add Medicine</h2>
+            <p>Add new medicines to inventory</p>
+        </a>
+
+        <a href="view.html" class="card view">
+            <i class="fas fa-clipboard-list"></i>
+            <h2>View Medicines</h2>
+            <p>View all stored medicines</p>
+        </a>
+
+        <a href="update.html" class="card update">
+            <i class="fas fa-edit"></i>
+            <h2>Update Medicine</h2>
+            <p>Modify existing medicine details</p>
+        </a>
+
+        <a href="delete.html" class="card delete">
+            <i class="fas fa-trash-alt"></i>
+            <h2>Delete Medicine</h2>
+            <p>Remove medicines from inventory</p>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    © 2025 MediTrack |  Smart Pharmacy Management
+</div>
+
+<script>
+async function loadCounters() {
+    const res = await fetch('/view');
+    const data = await res.json();
+
+    const total = data.length;
+    const expired = data.filter(m => new Date(m.expirationDate) < new Date()).length;
+    const lowStock = data.filter(m => m.quantity < 10).length;
+
+    document.querySelector("#totalMedicines h2").textContent = total;
+    document.querySelector("#expiredMedicines h2").textContent = expired;
+    document.querySelector("#lowStock h2").textContent = lowStock;
+}
+
+loadCounters();
+</script>
+
+</body>
+</html>

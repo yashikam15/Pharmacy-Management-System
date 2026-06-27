@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Delete Medicine</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #ffebee, #f9f9f9);
+}
+
+.container {
+    width: 400px;
+    margin: 80px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+h2 {
+    text-align: center;
+    color: #d32f2f;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #b71c1c;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #d32f2f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Delete Medicine</h2>
+
+<input id="d_name" placeholder="Medicine Name">
+<button onclick="deleteMedicine()">Delete</button>
+
+<a href="home.html">⬅ Back to Home</a>
+</div>
+
+<script src="deletescript.js"></script>
+</body>
+</html>
